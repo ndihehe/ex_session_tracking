@@ -18,4 +18,5 @@ public class LineItem {
     public double getTotal() {
         return product.getPrice() * quantity;
     }
+
 }

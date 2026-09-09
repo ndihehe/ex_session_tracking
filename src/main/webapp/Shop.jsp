@@ -16,21 +16,21 @@
             <th>Description</th>
             <th>Price</th>
         </tr>
-        </thread>
+        </thead>
         <c:forEach var="cd" items="${products}">
             <tr>
                 <td>${cd.description}</td>
                 <td>${cd.price}</td>
                 <td>
-                    <form action = "home" method = "get">
-                        <input type = "hidden" name = "productCode" value = "${cd.code}">
-                        <form action="cart" method="post">
-                            <input type="hidden" name="productCode" value="${cd.code}">
-                            <button type="submit">Add To Cart</button>
-                        </form>
+                    <form action="${pageContext.request.contextPath}/cart" method="post">
+                        <input type="hidden"
+                               name="productCode"
+                               value="${cd.code}">
+                        <button type="submit">Add To Cart</button>
                     </form>
                 </td>
             </tr>
         </c:forEach>
+        </thead>
     </table>
 </body>

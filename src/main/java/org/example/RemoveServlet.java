@@ -26,7 +26,7 @@ public class RemoveServlet extends HttpServlet {
 
         session.setAttribute("cart", cart);
 
-        request.getRequestDispatcher("/src/main/webapp/Cate.jsp")
+        request.getRequestDispatcher("/Cate.jsp")
                 .forward(request, response);
     }
 }

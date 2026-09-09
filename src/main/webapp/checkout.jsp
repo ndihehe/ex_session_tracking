@@ -10,14 +10,14 @@
     <body>
         <h1>CheckOut</h1>
         <table>
-        <thread>
+        <thead>
             <tr>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Amount</th>
             </tr>
-        </thread>
+        </thead>
         <tbody>
             <c:forEach var="item" items="${cart.items}">
             <tr>
@@ -28,7 +28,7 @@
             </tr>
             </c:forEach>
         </tbody>
-        </table>
+
         <h3>Total: ${cart.total}</h3>
     </body>
 </html>

@@ -15,8 +15,20 @@ public class YourCart{
         return items;
     }
 
-    public void addLineItem(LineItem item) {
-        items.add(item);
+    public void addLineItem(LineItem newItem) {
+        for (LineItem item : items) {
+            if (item.getProduct().getCode()
+                    .equals(newItem.getProduct().getCode())) {
+
+                item.setQuantity(
+                        item.getQuantity() + newItem.getQuantity()
+                );
+
+                return;
+            }
+        }
+
+        items.add(newItem);
     }
     public void removeLineItem(String productCode) {
 
@@ -42,5 +54,14 @@ public class YourCart{
                 return;
             }
         }
+    }
+    public double getTotal() {
+        double total = 0;
+
+        for (LineItem item : items) {
+            total += item.getTotal();
+        }
+
+        return total;
     }
 }

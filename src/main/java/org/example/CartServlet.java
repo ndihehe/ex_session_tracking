@@ -16,7 +16,7 @@ public class CartServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String productCode = request.getParameter("code");
+        String productCode = request.getParameter("productCode");
 
         HttpSession session = request.getSession();
         YourCart cart = (YourCart) session.getAttribute("cart");
@@ -29,13 +29,12 @@ public class CartServlet extends HttpServlet{
 
         if (product != null) {
             LineItem item = new LineItem(product, 1);
-            item.setProduct(product);
-            item.setQuantity(1);
+
             cart.addLineItem(item);
         }
 
         session.setAttribute("cart", cart);
-        String url = "/src/main/webapp/Cate.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
+        request.getRequestDispatcher("/Cate.jsp")
+                .forward(request, response);
     }
 }

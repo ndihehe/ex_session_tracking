@@ -19,7 +19,22 @@ public class UpdateServlet extends HttpServlet {
         String productCode = request.getParameter("productCode");
         String quantityText = request.getParameter("quantity");
 
-        int quantity = Integer.parseInt(quantityText);
+        int quantity;
+
+        try {
+            quantity = Integer.parseInt(quantityText);
+
+            if (quantity < 1) {
+                quantity = 1;
+            }
+
+        } catch (NumberFormatException e) {
+            response.sendError(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Invalid quantity"
+            );
+            return;
+        }
 
         HttpSession session = request.getSession();
 
@@ -31,7 +46,7 @@ public class UpdateServlet extends HttpServlet {
 
         session.setAttribute("cart", cart);
 
-        request.getRequestDispatcher("/src/main/webapp/Cate.jsp")
+        request.getRequestDispatcher("/Cate.jsp")
                 .forward(request, response);
     }
 }

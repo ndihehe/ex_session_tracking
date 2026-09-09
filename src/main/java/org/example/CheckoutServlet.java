@@ -21,11 +21,13 @@ import DB.*;
             if (cart == null || cart.getItems().isEmpty()) {
 
                 request.setAttribute("message", "ur cart is empty!");
-                request.getRequestDispatcher("/src/main/webapp/Cate.jsp").forward(request, response);
+                request.getRequestDispatcher("/Cate.jsp")
+                        .forward(request, response);
                 return;
             }
 
             request.setAttribute("cart", cart);
-            request.getRequestDispatcher("/src/main/webapp/checkout.jsp").forward(request, response);
+            request.getRequestDispatcher("/checkout.jsp")
+                    .forward(request, response);
     }
 }
