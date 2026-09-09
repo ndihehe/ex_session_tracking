@@ -5,7 +5,8 @@
 <head>
     <meta charset = "UTF-8">
     <title>Exercise_6-1</title>
-    <link rel = "stylesheet" href = "styles/main.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/style/main.css">
 </head>
 
 <body>
@@ -15,22 +16,26 @@
         <tr>
             <th>Description</th>
             <th>Price</th>
+            <th></th>
         </tr>
         </thead>
-        <c:forEach var="cd" items="${products}">
-            <tr>
-                <td>${cd.description}</td>
-                <td>${cd.price}</td>
-                <td>
-                    <form action="${pageContext.request.contextPath}/cart" method="post">
-                        <input type="hidden"
-                               name="productCode"
-                               value="${cd.code}">
-                        <button type="submit">Add To Cart</button>
-                    </form>
-                </td>
-            </tr>
-        </c:forEach>
+            <tbody>
+            <c:forEach var="cd" items="${products}">
+                <tr>
+                    <td>${cd.description}</td>
+                    <td>${cd.price}</td>
+
+                    <td>
+                        <form action="${pageContext.request.contextPath}/cart" method="post">
+                            <input type="hidden"
+                                   name="productCode"
+                                   value="${cd.code}">
+                            <button type="submit">Add To Cart</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
         </thead>
     </table>
 </body>

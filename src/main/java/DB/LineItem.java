@@ -16,7 +16,7 @@ public class LineItem {
     public void setQuantity(int quantity) { this.quantity = quantity; }
     public void setProduct(Product product) { this.product = product; }
     public double getTotal() {
-        return product.getPrice() * quantity;
+        return Math.round(product.getPrice() * quantity * 100.0) / 100.0;
     }
 
 }
